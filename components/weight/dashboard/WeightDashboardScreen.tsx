@@ -9,13 +9,15 @@ import { ErrorState } from '../shared/components/ErrorState';
 import { LoadingState } from '../shared/components/LoadingState';
 import { type PeriodFilter as PeriodFilterType, useWeightData } from '../shared/hooks/useWeightData';
 import { PeriodFilter } from './components/PeriodFilter';
+import { PeriodStats } from './components/PeriodStats';
 import { RecentEntriesSection } from './components/RecentEntriesSection';
 import { WeightChart } from './components/WeightChart';
 import { RECENT_ENTRIES_LIMIT } from './constants/recentEntriesLimit';
+import { calculatePeriodStats } from './utils/calculatePeriodStats';
 
 export function WeightDashboardScreen() {
   const router = useRouter();
-  const { entries, entriesWithChanges, loading, error, filterByPeriod, refresh } = useWeightData();
+  const { entries, entriesWithChanges, loading, error, filterByPeriod, deleteEntry, refresh } = useWeightData();
   const [selectedPeriod, setSelectedPeriod] = useState<PeriodFilterType>('month');
 
   useFocusEffect(() => {
@@ -24,6 +26,7 @@ export function WeightDashboardScreen() {
 
   const filteredEntries = filterByPeriod(selectedPeriod);
   const recentEntries = entriesWithChanges.slice(0, RECENT_ENTRIES_LIMIT);
+  const periodStats = calculatePeriodStats(filteredEntries);
 
   function handleShowHistory() {
     router.push('/(tabs)/(weight)/history');
@@ -49,7 +52,15 @@ export function WeightDashboardScreen() {
       <View style={styles.chartContainer}>
         <WeightChart entries={filteredEntries} />
       </View>
-      <RecentEntriesSection entries={recentEntries} totalCount={entries.length} onShowAll={handleShowHistory} />
+      <View style={styles.statsContainer}>
+        <PeriodStats stats={periodStats} />
+      </View>
+      <RecentEntriesSection
+        entries={recentEntries}
+        totalCount={entries.length}
+        onShowAll={handleShowHistory}
+        onDelete={deleteEntry}
+      />
     </ScrollView>
   );
 }
@@ -64,5 +75,8 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     marginBottom: 16,
+  },
+  statsContainer: {
+    marginBottom: 24,
   },
 });

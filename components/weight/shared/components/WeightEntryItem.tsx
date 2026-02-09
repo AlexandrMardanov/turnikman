@@ -12,12 +12,14 @@ import { formatFullDate } from '../utils/formatFullDate';
 type WeightEntryItemProps = {
   entry: WeightEntry;
   change: number;
+  onDelete: (id: string) => Promise<void>;
 };
 
 export function WeightEntryItem(props: WeightEntryItemProps) {
-  const { entry, change } = props;
+  const { entry, change, onDelete } = props;
   const { handleDelete, handleEdit } = useWeightEntryActions({
     entryId: entry.id,
+    onDelete,
   });
 
   return (

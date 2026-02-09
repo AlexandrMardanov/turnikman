@@ -12,7 +12,7 @@ import { WeightEntryItem } from '../shared/components/WeightEntryItem';
 import { useWeightData } from '../shared/hooks/useWeightData';
 
 export function WeightHistoryScreen() {
-  const { entriesWithChanges, loading, error, refresh } = useWeightData();
+  const { entriesWithChanges, loading, error, deleteEntry, refresh } = useWeightData();
 
   useFocusEffect(() => {
     refresh();
@@ -35,7 +35,7 @@ export function WeightHistoryScreen() {
       <FlatList
         data={entriesWithChanges}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <WeightEntryItem entry={item} change={item.change} />}
+        renderItem={({ item }) => <WeightEntryItem entry={item} change={item.change} onDelete={deleteEntry} />}
         refreshControl={<RefreshControl refreshing={loading} onRefresh={refresh} tintColor={COLORS.accent.primary} />}
       />
     </ScreenContainer>
