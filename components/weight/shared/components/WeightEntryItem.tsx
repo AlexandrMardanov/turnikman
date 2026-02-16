@@ -29,7 +29,7 @@ export function WeightEntryItem(props: WeightEntryItemProps) {
         <View style={styles.weightRow}>
           <Text style={styles.weight}>{entry.weight} кг</Text>
           {change !== 0 && (
-            <Text style={[styles.change, change < 0 ? styles.changePositive : styles.changeNegative]}>
+            <Text style={[styles.change, change < 0 ? styles.changeDown : styles.changeUp]}>
               {change > 0 ? '+' : ''} {change.toFixed(1)} кг
             </Text>
           )}
@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.medium,
   },
-  changePositive: {
+  changeDown: {
     color: COLORS.accent.success,
   },
-  changeNegative: {
-    color: COLORS.accent.danger,
+  changeUp: {
+    color: COLORS.accent.primary,
   },
   actions: {
     flexDirection: 'row',

@@ -17,7 +17,7 @@ export function PeriodStats(props: PeriodStatsProps) {
 
   const isPositive = stats.change > 0;
   const isNeutral = stats.change === 0;
-  const changeColor = isNeutral ? COLORS.text.secondary : isPositive ? COLORS.accent.danger : COLORS.accent.success;
+  const changeColor = isNeutral ? COLORS.text.secondary : isPositive ? COLORS.accent.primary : COLORS.accent.success;
   const changeSign = isPositive ? '+' : '';
 
   return (
