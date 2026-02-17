@@ -7,6 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { getWeightEntry } from '@/lib/weight-service';
 
 import { useWeightData } from '../../shared/hooks/useWeightData';
+import { formatDateToString } from '../utils/formatDateToString';
 import { validateWeightInput } from '../utils/validateWeightInput';
 
 type UseWeightFormProps = {
@@ -72,7 +73,7 @@ export function useWeightForm(props: UseWeightFormProps) {
     setLoading(true);
 
     const weightNum = parseFloat(weight);
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = formatDateToString(date);
 
     const savePromise = id
       ? updateEntry(id, {

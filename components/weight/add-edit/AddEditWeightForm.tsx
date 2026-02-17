@@ -5,10 +5,10 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Button } from '@/components/shared/Button';
 import { FormContainer } from '@/components/shared/FormContainer';
 import { Input } from '@/components/shared/Input';
+import { LoadingState } from '@/components/shared/LoadingState';
 import { COLORS } from '@/constants/colors';
 import { FONTS } from '@/constants/fonts';
 
-import { LoadingState } from '../shared/components/LoadingState';
 import { useWeightForm } from './hooks/useWeightForm';
 
 type AddEditWeightFormProps = {

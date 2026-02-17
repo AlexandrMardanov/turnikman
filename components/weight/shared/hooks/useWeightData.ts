@@ -27,22 +27,29 @@ export function useWeightData() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadEntries = useCallback(async () => {
-    if (!user?.id) {
-      return;
-    }
+  const loadEntries = useCallback(
+    async (showLoader = true) => {
+      if (!user?.id) {
+        return;
+      }
 
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await getWeightEntries(user.id);
-      setEntries(data);
-    } catch (err) {
-      Alert.alert('Помилка', (err as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  }, [user?.id]);
+      try {
+        if (showLoader) {
+          setLoading(true);
+        }
+        setError(null);
+        const data = await getWeightEntries(user.id);
+        setEntries(data);
+      } catch (err) {
+        Alert.alert('Помилка', (err as Error).message);
+      } finally {
+        if (showLoader) {
+          setLoading(false);
+        }
+      }
+    },
+    [user?.id]
+  );
 
   useEffect(() => {
     loadEntries();
@@ -102,6 +109,10 @@ export function useWeightData() {
 
   const entriesWithChanges = getEntriesWithChanges(entries);
 
+  const refresh = useCallback(() => {
+    loadEntries(false); // Silent refresh without loader
+  }, [loadEntries]);
+
   return {
     entries,
     entriesWithChanges,
@@ -111,6 +122,6 @@ export function useWeightData() {
     addEntry,
     updateEntry,
     deleteEntry,
-    refresh: loadEntries,
+    refresh,
   };
 }

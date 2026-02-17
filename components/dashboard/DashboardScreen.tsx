@@ -1,22 +1,42 @@
-import { StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { COLORS } from '@/constants/colors';
-import { FONTS } from '@/constants/fonts';
+import { useFocusEffect } from '@react-navigation/native';
 
-import { ScreenContainer } from '../shared/ScreenContainer';
+import { ErrorState } from '@/components/shared/ErrorState';
+import { LoadingState } from '@/components/shared/LoadingState';
+
+import { EmptyWeightState } from './components/EmptyWeightState';
+import { WeightCard } from './components/WeightCard';
+import { useDashboardData } from './hooks/useDashboardData';
 
 export function DashboardScreen() {
+  const { weightData, loading, error, refresh } = useDashboardData();
+
+  useFocusEffect(() => {
+    refresh();
+  });
+
+  if (loading) {
+    return <LoadingState />;
+  }
+
+  if (error) {
+    return <ErrorState message={error} />;
+  }
+
   return (
-    <ScreenContainer>
-      <Text style={styles.text}>Привіт</Text>
-    </ScreenContainer>
+    <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <View style={styles.content}>{weightData ? <WeightCard data={weightData} /> : <EmptyWeightState />}</View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-    fontFamily: FONTS.bold,
-    color: COLORS.text.primary,
+  scrollView: {
+    flex: 1,
+  },
+  content: {
+    padding: 24,
+    gap: 16,
   },
 });
