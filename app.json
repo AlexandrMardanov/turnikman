@@ -18,7 +18,14 @@
       "bundleIdentifier": "com.mardanov.turnikman"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Дозвольте ТурнікМен доступ до фото.",
+          "cameraPermission": "Дозвольте ТурнікМен доступ до камери."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

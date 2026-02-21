@@ -26,6 +26,7 @@ File-based routing under `app/`:
 - `(tabs)/` — protected tab navigation
   - `(dashboard)/` — main dashboard
   - `(weight)/` — weight tracking (dashboard, history, add-edit)
+  - `(exercises)/` — exercises database (in progress)
 
 Auth state drives automatic redirection via `useAuthRedirect` hook.
 
@@ -55,6 +56,19 @@ constants/             # colors.ts, fonts.ts
 
 Keep `app/` files minimal — business logic belongs in `components/`.
 
+## Development Principles
+
+**Think before coding**: State assumptions explicitly. If uncertain, ask. Surface tradeoffs.
+
+**Simplicity first**: Minimum code that solves the problem. No speculative features, abstractions for single-use code, or error handling for impossible scenarios. Ask: "Would a senior engineer say this is overcomplicated?" If yes, rewrite it.
+
+**Surgical changes**: Touch only what you must. Match existing style. Don't "improve" adjacent code or refactor unrelated things. Every changed line should trace directly to the task.
+
+**Goal-driven execution**: Define success criteria before implementing. Transform vague tasks into verifiable goals:
+- "Add validation" → Write tests for invalid inputs, then make them pass
+- "Fix the bug" → Write a test that reproduces it, then make it pass
+- "Refactor X" → Ensure tests pass before and after
+
 ## Code Conventions
 
 **Types over interfaces**: Always use `type`, never `interface`.
@@ -74,6 +88,8 @@ export function MyComponent(props: Props) {
 **Imports**: Path alias `@/` maps to the repo root. Prettier auto-sorts imports: react → third-party → `@/` → relative.
 
 **Naming**: kebab-case folders, PascalCase components, `useXxx` hooks, one exported function per utility file.
+
+**Dependencies**: Always install packages with exact versions (`npm install --save-exact` / `--save-exact`). No `^` or `~` prefixes.
 
 **Commits**: Conventional commits — `feat:`, `fix:`, `refactor:`, `style:`, `perf:`, `docs:`, `chore:`. Max 50 chars, no period.
 
