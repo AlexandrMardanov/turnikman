@@ -5,6 +5,7 @@ This directory contains feature documentation for the ТурнікМен app. Ea
 ## Features
 
 - [Authentication](./auth.md) — User sign up, sign in, and password recovery via OTP
+- [Dashboard](./dashboard.md) — Main entry screen with weight summary, stats, and trend
 - [Weight Tracking](./weight.md) — Weight logging, dashboard with charts, history, and statistics
 - [Profile](./profile.md) — User profile management (view/edit name, logout)
 

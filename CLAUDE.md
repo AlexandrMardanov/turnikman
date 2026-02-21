@@ -98,6 +98,7 @@ export function MyComponent(props: Props) {
 Feature documentation is available in the `.doc/` directory:
 - [`.doc/README.md`](.doc/README.md) — documentation index and guidelines
 - [`.doc/auth.md`](.doc/auth.md) — authentication feature specification
+- [`.doc/dashboard.md`](.doc/dashboard.md) — dashboard feature specification
 - [`.doc/weight.md`](.doc/weight.md) — weight tracking feature specification
 - [`.doc/profile.md`](.doc/profile.md) — profile feature specification
 
@@ -106,5 +107,7 @@ When working on a feature, check `.doc/` for existing documentation. When creati
 ## Completion Status
 
 - ✅ Authentication (login, signup, OTP-based password reset)
+- ✅ Dashboard (weight summary, stats, trend, navigation to other features)
 - ✅ Weight tracking (dashboard with chart, add/edit, history, reminders)
+- ✅ Profile (view/edit name, logout)
 - ❌ Not started: Training programs, skills tracking, exercises database, achievements, workout history
