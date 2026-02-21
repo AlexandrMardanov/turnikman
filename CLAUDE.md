@@ -97,6 +97,7 @@ export function MyComponent(props: Props) {
 
 Feature documentation is available in the `.doc/` directory:
 - [`.doc/README.md`](.doc/README.md) — documentation index and guidelines
+- [`.doc/weight.md`](.doc/weight.md) — weight tracking feature specification
 - [`.doc/profile.md`](.doc/profile.md) — profile feature specification
 
 When working on a feature, check `.doc/` for existing documentation. When creating or modifying features, add or update the corresponding `.doc/` file.

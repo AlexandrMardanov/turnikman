@@ -4,6 +4,7 @@ This directory contains feature documentation for the ТурнікМен app. Ea
 
 ## Features
 
+- [Weight Tracking](./weight.md) — Weight logging, dashboard with charts, history, and statistics
 - [Profile](./profile.md) — User profile management (view/edit name, logout)
 
 ## Adding New Docs
