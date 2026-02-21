@@ -93,6 +93,14 @@ export function MyComponent(props: Props) {
 
 **Commits**: Conventional commits — `feat:`, `fix:`, `refactor:`, `style:`, `perf:`, `docs:`, `chore:`. Max 50 chars, no period.
 
+## Documentation
+
+Feature documentation is available in the `.doc/` directory:
+- [`.doc/README.md`](.doc/README.md) — documentation index and guidelines
+- [`.doc/profile.md`](.doc/profile.md) — profile feature specification
+
+When working on a feature, check `.doc/` for existing documentation. When creating or modifying features, add or update the corresponding `.doc/` file.
+
 ## Completion Status
 
 - ✅ Authentication (login, signup, OTP-based password reset)
