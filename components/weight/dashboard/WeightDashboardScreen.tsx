@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { useFocusEffect } from '@react-navigation/native';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 
 import { ErrorState } from '@/components/shared/ErrorState';
 import { LoadingState } from '@/components/shared/LoadingState';

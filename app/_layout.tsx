@@ -1,3 +1,6 @@
+import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -12,14 +15,22 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   return (
-    <AuthProvider>
-      <WeightReminderProvider>
-        <TabBarProvider>
-          <StatusBar style='dark' />
-          <AppInitialization />
-          <Slot />
-        </TabBarProvider>
-      </WeightReminderProvider>
-    </AuthProvider>
+    <GestureHandlerRootView style={styles.root}>
+      <AuthProvider>
+        <WeightReminderProvider>
+          <TabBarProvider>
+            <StatusBar style='dark' />
+            <AppInitialization />
+            <Slot />
+          </TabBarProvider>
+        </WeightReminderProvider>
+      </AuthProvider>
+    </GestureHandlerRootView>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+});

@@ -19,6 +19,10 @@ export default function TabsLayout() {
         <NativeTabs.Trigger.Icon sf='figure.stand' md='accessibility' />
         {shouldShowBadge && <NativeTabs.Trigger.Badge>!</NativeTabs.Trigger.Badge>}
       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name='(exercises)'>
+        <NativeTabs.Trigger.Label>Вправи</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf='figure.rolling' md='fitness_center' />
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }

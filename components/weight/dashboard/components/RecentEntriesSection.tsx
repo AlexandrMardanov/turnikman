@@ -22,7 +22,7 @@ export function RecentEntriesSection(props: RecentEntriesSectionProps) {
   const { entries, totalCount, onShowAll, onDelete } = props;
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.sectionHeader}>
         <Text style={styles.sectionTitle}>Останні записи</Text>
         {totalCount > RECENT_ENTRIES_LIMIT && (
@@ -32,7 +32,7 @@ export function RecentEntriesSection(props: RecentEntriesSectionProps) {
       {entries.length === 0 ? (
         <Text style={styles.noDataText}>Немає записів за цей період</Text>
       ) : (
-        <SafeAreaView edges={{ bottom: true }} style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
           {entries.map((entry) => (
             <WeightEntryItem key={entry.id} entry={entry} change={entry.change} onDelete={onDelete} />
           ))}
@@ -43,6 +43,9 @@ export function RecentEntriesSection(props: RecentEntriesSectionProps) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
