@@ -51,7 +51,7 @@ A scrollable detail view for a single exercise:
 - Exercise name as a heading
 - **ExerciseInfo** — type badge, muscle group, difficulty, description, primary and secondary muscles
 - **EmomDetails** — duration, work time, rest time (only rendered for `emom` type)
-- **ExerciseTips** — tips card (only rendered when `tips` is set)
+- **ExerciseTechnique** — technique card (only rendered when `technique` is set)
 - **ExerciseGoal** — set/update target value; toggle achieved status (authenticated users only)
 - **ExerciseLogSection** — type-specific add-log form plus scrollable log history with delete (authenticated users only)
 - Edit button in header: navigates to the add-edit form; shown only for custom exercises (predefined exercises are read-only)
@@ -422,7 +422,7 @@ components/exercises/
 │   │   ├── ExerciseImage.tsx                # Image with barbell icon fallback
 │   │   ├── ExerciseInfo.tsx                 # Type, muscle, difficulty, description, muscles
 │   │   ├── EmomDetails.tsx                  # Duration / work / rest (emom only)
-│   │   ├── ExerciseTips.tsx                 # Tips card
+│   │   ├── ExerciseTechnique.tsx            # Technique card
 │   │   ├── ExerciseGoal.tsx                 # Goal set / achieved toggle
 │   │   ├── ExerciseLogSection.tsx           # Add-log form + log list
 │   │   └── ExerciseLogItem.tsx              # Individual log row with delete

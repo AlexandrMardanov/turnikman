@@ -15,8 +15,8 @@ paths:
 
 ## Props
 
-- Define `type Props = { ... }` above the component
-- Pass as `props: Props` in the function signature
+- Define `type ComponentProps = { ... }` above the component
+- Pass as `props: ComponentProps` in the function signature
 - Destructure inside the body: `const { label, onPress } = props`
 - Never destructure in the function signature
 
