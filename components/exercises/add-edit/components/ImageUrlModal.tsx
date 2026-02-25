@@ -4,29 +4,30 @@ import { Button } from '@/components/shared/Button';
 import { Input } from '@/components/shared/Input';
 import { ModalShell } from '@/components/shared/ModalShell';
 
-type EditNameModalProps = {
+type ImageUrlModalProps = {
   visible: boolean;
-  name: string;
-  onChangeName: (name: string) => void;
+  url: string;
+  onChangeUrl: (url: string) => void;
   onSave: () => void;
   onCancel: () => void;
-  isSaving: boolean;
 };
 
-export function EditNameModal(props: EditNameModalProps) {
-  const { visible, name, onChangeName, onSave, onCancel, isSaving } = props;
+export function ImageUrlModal(props: ImageUrlModalProps) {
+  const { visible, url, onChangeUrl, onSave, onCancel } = props;
 
   return (
-    <ModalShell visible={visible} title={`Редагувати ім'я`} onClose={onCancel}>
+    <ModalShell visible={visible} title='Посилання на зображення' onClose={onCancel}>
       <Input
-        value={name}
-        onChangeText={onChangeName}
-        placeholder="Введіть ваше ім'я"
-        autoCapitalize='words'
+        value={url}
+        onChangeText={onChangeUrl}
+        placeholder='https://...'
+        autoCapitalize='none'
+        keyboardType='url'
+        autoFocus
         style={styles.input}
       />
       <View style={styles.buttonRow}>
-        <Button title='Зберегти' onPress={onSave} loading={isSaving} variant='primary' style={styles.button} />
+        <Button title='Зберегти' onPress={onSave} variant='primary' style={styles.button} />
         <Button title='Скасувати' onPress={onCancel} variant='danger' style={styles.button} />
       </View>
     </ModalShell>

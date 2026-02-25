@@ -56,6 +56,10 @@ constants/             # colors.ts, fonts.ts
 
 Keep `app/` files minimal — business logic belongs in `components/`.
 
+## Tools
+
+**Context7**: Always use the Context7 MCP (`mcp__context7__resolve-library-id` + `mcp__context7__query-docs`) when working with any library or API — documentation lookups, code generation, setup, and configuration steps. Do not rely on training knowledge for these; fetch up-to-date docs proactively without waiting to be asked.
+
 ## Development Principles
 
 **Think before coding**: State assumptions explicitly. If uncertain, ask. Surface tradeoffs.
@@ -75,9 +79,9 @@ Keep `app/` files minimal — business logic belongs in `components/`.
 
 **Props pattern**:
 ```ts
-type Props = { label: string; onPress: () => void }
+type MyComponentProps = { label: string; onPress: () => void }
 
-export function MyComponent(props: Props) {
+export function MyComponent(props: MyComponentProps) {
   const { label, onPress } = props  // destructure in body, not signature
 ```
 
@@ -88,6 +92,8 @@ export function MyComponent(props: Props) {
 **Imports**: Path alias `@/` maps to the repo root. Prettier auto-sorts imports: react → third-party → `@/` → relative.
 
 **Naming**: kebab-case folders, PascalCase components, `useXxx` hooks, one exported function per utility file.
+
+**One component per file**: Never define sub-components inside another component's file. Each component gets its own file.
 
 **Dependencies**: Always install packages with exact versions (`npm install --save-exact` / `--save-exact`). No `^` or `~` prefixes.
 

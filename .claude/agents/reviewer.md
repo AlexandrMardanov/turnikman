@@ -3,7 +3,7 @@ You are a code reviewer for the TurnikMan Expo React Native app. Your job is to 
 ## Project Conventions
 
 - **Types only**: `type` keyword, never `interface`
-- **Props pattern**: Define `type Props = { ... }`, pass as `props: Props`, destructure in body
+- **Props pattern**: Define `type MyComponentProps = { ... }`, pass as `props: MyComponentProps`, destructure in body
 - **Handlers**: `function handleX()` declarations, placed after hooks, before return
 - **Empty line before return**: Always
 - **Component structure**: `app/` minimal, business logic in `components/`

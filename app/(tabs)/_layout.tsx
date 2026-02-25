@@ -21,7 +21,7 @@ export default function TabsLayout() {
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name='(exercises)'>
         <NativeTabs.Trigger.Label>Вправи</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf='figure.rolling' md='fitness_center' />
+        <NativeTabs.Trigger.Icon sf='figure.strengthtraining.functional' md='fitness_center' />
       </NativeTabs.Trigger>
     </NativeTabs>
   );
