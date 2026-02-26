@@ -26,7 +26,7 @@ export function DeleteExerciseButton(props: DeleteExerciseButtonProps) {
           setLoading(true);
           deleteExercise(id)
             .then(() => {
-              router.back();
+              router.dismissTo('/(tabs)/(exercises)');
             })
             .catch((err) => {
               Alert.alert('Помилка', (err as Error).message);

@@ -19,6 +19,7 @@ The profile screen is accessible from the **Dashboard** tab via the profile butt
 **Location**: `components/profile/ProfileScreen.tsx`
 
 The main container component that orchestrates all profile-related sub-components. It wraps the profile content in `ScreenContainer` and renders:
+
 - `ProfileInfo` — displays user's name and email
 - `EditNameModal` — modal for editing the user's name
 
@@ -27,6 +28,7 @@ The main container component that orchestrates all profile-related sub-component
 **Location**: `components/profile/components/ProfileInfo.tsx`
 
 Displays the user's profile information in a clean, read-only format:
+
 - **Name** — displays user's name with an edit icon button; shows "Не вказано" (Not specified) if name is empty
 - **Email** — displays user's email; shows "Не вказано" if email is not available
 
@@ -37,6 +39,7 @@ Uses the `InfoItem` component for consistent label-value display styling.
 **Location**: `components/profile/components/EditNameModal.tsx`
 
 A modal dialog for editing the user's name. Features:
+
 - Blur overlay with modal centered on screen
 - Text input field pre-filled with current name
 - Input validation (trimming whitespace)
@@ -55,6 +58,7 @@ A reusable sub-component for displaying label-value pairs consistently. Used for
 **Location**: `components/profile/components/LogoutButton.tsx`
 
 Header icon button for logging out. Features:
+
 - Icon-based button rendered in the header
 - Confirmation dialog before logout
 - Uses `useLogout` hook for logout logic
@@ -132,6 +136,7 @@ type UpdateProfileData = {
 **Location**: `components/profile/hooks/useProfileEdit.ts`
 
 Manages state and logic for editing the user's name:
+
 - `isModalVisible` — controls modal visibility
 - `editedName` — current value in edit input
 - `isLoading` — API call loading state
@@ -144,6 +149,7 @@ Manages state and logic for editing the user's name:
 **Location**: `components/profile/hooks/useLogout.ts`
 
 Manages logout flow with confirmation:
+
 - `handleLogout()` — shows confirmation dialog
 - On confirm: calls `signOut`, waits for redirect
 - On cancel: does nothing
@@ -157,7 +163,7 @@ Manages logout flow with confirmation:
 Updates user profile information in Supabase:
 
 ```typescript
-async function updateProfile(updates: UpdateProfileData): Promise<User>
+async function updateProfile(updates: UpdateProfileData): Promise<User>;
 ```
 
 - Takes an object with `name` field
@@ -176,6 +182,7 @@ Already exists in auth service; handles session cleanup and user state clearing.
 **Location**: `contexts/AuthContext.tsx`
 
 Provides profile-related functions and state:
+
 - `user` — current authenticated user object (includes email and name from metadata)
 - `updateProfile(updates)` — updates user profile in Supabase
 - `signOut()` — clears session and auth state

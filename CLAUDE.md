@@ -21,7 +21,9 @@ No test suite is configured.
 **ТурнікМен** is a React Native calisthenics/fitness tracking app built with Expo 55, React 19, TypeScript, and Supabase.
 
 ### Navigation (Expo Router)
+
 File-based routing under `app/`:
+
 - `(auth)/` — unauthenticated screens (login, signup, forgot-password, verify-otp)
 - `(tabs)/` — protected tab navigation
   - `(dashboard)/` — main dashboard
@@ -31,12 +33,14 @@ File-based routing under `app/`:
 Auth state drives automatic redirection via `useAuthRedirect` hook.
 
 ### State & Data
+
 - **Supabase** (`lib/supabase.ts`) — PostgreSQL + Auth backend; env vars `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`
 - **Service layer**: `lib/auth-service.ts`, `lib/weight-service.ts` — all Supabase calls go here
 - **React Context**: `contexts/` — `AuthContext`, `TabBarContext`, `WeightReminderContext`
 - **AsyncStorage** — local persistence
 
 ### Component/Feature Structure
+
 ```
 components/
   <feature>/           # e.g., weight/, auth/, dashboard/
@@ -69,6 +73,7 @@ Keep `app/` files minimal — business logic belongs in `components/`.
 **Surgical changes**: Touch only what you must. Match existing style. Don't "improve" adjacent code or refactor unrelated things. Every changed line should trace directly to the task.
 
 **Goal-driven execution**: Define success criteria before implementing. Transform vague tasks into verifiable goals:
+
 - "Add validation" → Write tests for invalid inputs, then make them pass
 - "Fix the bug" → Write a test that reproduces it, then make it pass
 - "Refactor X" → Ensure tests pass before and after
@@ -78,6 +83,7 @@ Keep `app/` files minimal — business logic belongs in `components/`.
 **Types over interfaces**: Always use `type`, never `interface`.
 
 **Props pattern**:
+
 ```ts
 type MyComponentProps = { label: string; onPress: () => void }
 
@@ -102,6 +108,7 @@ export function MyComponent(props: MyComponentProps) {
 ## Documentation
 
 Feature documentation is available in the `.doc/` directory:
+
 - [`.doc/README.md`](.doc/README.md) — documentation index and guidelines
 - [`.doc/auth.md`](.doc/auth.md) — authentication feature specification
 - [`.doc/dashboard.md`](.doc/dashboard.md) — dashboard feature specification

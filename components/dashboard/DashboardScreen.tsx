@@ -1,9 +1,8 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { useFocusEffect } from 'expo-router';
-
 import { ErrorState } from '@/components/shared/ErrorState';
 import { LoadingState } from '@/components/shared/LoadingState';
+import { useRefreshOnFocus } from '@/hooks/useRefreshOnFocus';
 
 import { EmptyWeightState } from './components/EmptyWeightState';
 import { WeightCard } from './components/WeightCard';
@@ -12,9 +11,7 @@ import { useDashboardData } from './hooks/useDashboardData';
 export function DashboardScreen() {
   const { weightData, loading, error, refresh } = useDashboardData();
 
-  useFocusEffect(() => {
-    refresh();
-  });
+  useRefreshOnFocus(refresh);
 
   if (loading) {
     return <LoadingState />;

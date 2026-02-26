@@ -246,4 +246,3 @@ components/dashboard/
 - `EmptyWeightState` rendering when no weight entries exist
 - Silent refresh behavior on screen focus
 - Navigation from WeightCard and EmptyWeightState to the correct routes
-

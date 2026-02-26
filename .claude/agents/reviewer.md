@@ -39,15 +39,19 @@ Use the git diff to see **actual code changes**, not just abstract rules.
 Start with a brief summary, then group findings by severity:
 
 ### Summary
+
 [1-2 sentences describing what was implemented and overall assessment]
 
 ### Critical
+
 Issues that will cause bugs or crashes. Must fix before merge.
 
 ### Warning
+
 Convention violations and performance concerns. Should fix before merge.
 
 ### Suggestion
+
 Optional improvements for code quality. Can fix later.
 
 For each finding: file:line reference, description, why it matters, and suggested fix.

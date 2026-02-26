@@ -1,11 +1,10 @@
 import { FlatList, RefreshControl } from 'react-native';
 
-import { useFocusEffect } from 'expo-router';
-
 import { ErrorState } from '@/components/shared/ErrorState';
 import { LoadingState } from '@/components/shared/LoadingState';
 import { ScreenContainer } from '@/components/shared/ScreenContainer';
 import { COLORS } from '@/constants/colors';
+import { useRefreshOnFocus } from '@/hooks/useRefreshOnFocus';
 
 import { EmptyState } from '../shared/components/EmptyState';
 import { WeightEntryItem } from '../shared/components/WeightEntryItem';
@@ -14,9 +13,7 @@ import { useWeightData } from '../shared/hooks/useWeightData';
 export function WeightHistoryScreen() {
   const { entriesWithChanges, loading, error, deleteEntry, refresh } = useWeightData();
 
-  useFocusEffect(() => {
-    refresh();
-  });
+  useRefreshOnFocus(refresh);
 
   if (loading && entriesWithChanges.length === 0) {
     return <LoadingState />;

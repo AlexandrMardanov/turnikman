@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { useFocusEffect, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 import { ErrorState } from '@/components/shared/ErrorState';
 import { LoadingState } from '@/components/shared/LoadingState';
 import { useWeightReminderContext } from '@/contexts/WeightReminderContext';
+import { useRefreshOnFocus } from '@/hooks/useRefreshOnFocus';
 
 import { EmptyState } from '../shared/components/EmptyState';
 import { type PeriodFilter as PeriodFilterType, useWeightData } from '../shared/hooks/useWeightData';
@@ -23,9 +24,7 @@ export function WeightDashboardScreen() {
   const { shouldShowBadge } = useWeightReminderContext();
   const [selectedPeriod, setSelectedPeriod] = useState<PeriodFilterType>('month');
 
-  useFocusEffect(() => {
-    refresh();
-  });
+  useRefreshOnFocus(refresh);
 
   const filteredEntries = filterByPeriod(selectedPeriod);
   const recentEntries = entriesWithChanges.slice(0, RECENT_ENTRIES_LIMIT);

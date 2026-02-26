@@ -7,6 +7,7 @@ import { HeaderIconButton } from '@/components/shared/HeaderIconButton';
 import { LoadingState } from '@/components/shared/LoadingState';
 import { COLORS } from '@/constants/colors';
 import { FONTS } from '@/constants/fonts';
+import { useRefreshOnFocus } from '@/hooks/useRefreshOnFocus';
 import { useScreenOptions } from '@/hooks/useScreenOptions';
 
 import { ExerciseImage } from './components/ExerciseImage';
@@ -22,7 +23,9 @@ type ExerciseDetailScreenProps = {
 export function ExerciseDetailScreen(props: ExerciseDetailScreenProps) {
   const { id } = props;
   const router = useRouter();
-  const { exercise, loading, error } = useExerciseDetail(id);
+  const { exercise, loading, error, refresh } = useExerciseDetail(id);
+
+  useRefreshOnFocus(refresh);
 
   useScreenOptions({
     title: exercise?.name ?? '',

@@ -154,9 +154,10 @@ type WeightEntryWithChange = WeightEntry & {
 1. User swipes or taps delete on an entry
 2. Confirmation dialog appears
 3. If confirmed:
-  - Entry deleted from database
-  - Dashboard refreshes
-  - Reminder badge recalculated
+
+- Entry deleted from database
+- Dashboard refreshes
+- Reminder badge recalculated
 
 ### Change Period Filter
 
@@ -272,19 +273,19 @@ Features:
 All database operations for weight entries:
 
 ```typescript
-async function getWeightEntries(userId: string): Promise<WeightEntry[]>
+async function getWeightEntries(userId: string): Promise<WeightEntry[]>;
 // Fetches all weight entries for user, ordered newest first
 
-async function getWeightEntry(id: string): Promise<WeightEntry | null>
+async function getWeightEntry(id: string): Promise<WeightEntry | null>;
 // Fetches single weight entry by ID
 
-async function addWeightEntry(data: WeightEntryCreate): Promise<WeightEntry>
+async function addWeightEntry(data: WeightEntryCreate): Promise<WeightEntry>;
 // Creates new weight entry (prevents duplicate dates per user)
 
-async function updateWeightEntry(id: string, data: WeightEntryUpdate): Promise<WeightEntry>
+async function updateWeightEntry(id: string, data: WeightEntryUpdate): Promise<WeightEntry>;
 // Updates weight and/or date (prevents duplicate dates per user)
 
-async function deleteWeightEntry(id: string): Promise<void>
+async function deleteWeightEntry(id: string): Promise<void>;
 // Deletes weight entry by ID
 ```
 
@@ -304,8 +305,8 @@ Provides reminder state across the app:
 
 ```typescript
 type WeightReminderContextType = {
-  shouldShowBadge: boolean;              // Show reminder badge
-  refresh: () => void;                   // Recalculate reminder state
+  shouldShowBadge: boolean; // Show reminder badge
+  refresh: () => void; // Recalculate reminder state
 };
 ```
 
@@ -485,4 +486,3 @@ Key areas to test:
   - Test refresh
   - Test form submission
   - Test pull-to-refresh
-

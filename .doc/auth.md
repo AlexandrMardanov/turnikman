@@ -130,13 +130,13 @@ Authentication data is managed by **Supabase Auth** and user profiles are stored
 
 ```typescript
 type User = {
-  id: string;                    // UUID
+  id: string; // UUID
   email: string;
   user_metadata: {
-    name?: string;               // User's full name
+    name?: string; // User's full name
   };
-  created_at: string;            // ISO timestamp
-  updated_at: string;            // ISO timestamp
+  created_at: string; // ISO timestamp
+  updated_at: string; // ISO timestamp
   last_sign_in_at: string | null; // Last login timestamp
   email_confirmed_at: string | null;
   phone_confirmed_at: string | null;
@@ -389,39 +389,39 @@ function useVerifyOTP() {
 All authentication operations:
 
 ```typescript
-async function signIn(data: SignInData): Promise<User>
+async function signIn(data: SignInData): Promise<User>;
 // Sign in with email and password
 // Throws: "Невдалося увійти" on error
 
-async function signUp(data: SignUpData): Promise<void>
+async function signUp(data: SignUpData): Promise<void>;
 // Register new account
 // Throws: "Невдалося зареєструватися" on error
 
-async function signOut(): Promise<void>
+async function signOut(): Promise<void>;
 // Sign out current user
 // Throws: "Невдалося вийти" on error
 
-async function updateProfile(userId: string, data: UpdateProfileData): Promise<void>
+async function updateProfile(userId: string, data: UpdateProfileData): Promise<void>;
 // Update user profile (name)
 // Throws: "Невдалося оновити профіль" on error
 
-async function sendPasswordResetOTP(email: string): Promise<void>
+async function sendPasswordResetOTP(email: string): Promise<void>;
 // Send OTP code to email for password reset
 // Throws: "Невдалося надіслати код для відновлення пароля" on error
 
-async function verifyOTPAndResetPassword(data: VerifyOTPData): Promise<void>
+async function verifyOTPAndResetPassword(data: VerifyOTPData): Promise<void>;
 // Verify OTP and update password
 // Throws: "Невдалося верифікувати код OTP" or "Невдалося оновити пароль" on error
 
-async function updatePassword(newPassword: string): Promise<void>
+async function updatePassword(newPassword: string): Promise<void>;
 // Update password for authenticated user
 // Throws: "Невдалося оновити пароль" on error
 
-async function getCurrentUser(): Promise<User | null>
+async function getCurrentUser(): Promise<User | null>;
 // Get current authenticated user
 // Returns null if not authenticated
 
-async function getCurrentSession()
+async function getCurrentSession();
 // Get current session object (contains tokens, etc.)
 ```
 
@@ -435,8 +435,8 @@ Provides authentication state and operations across the entire app:
 
 ```typescript
 type AuthContextType = {
-  user: User | null;             // Current authenticated user
-  loading: boolean;              // Loading state during auth check
+  user: User | null; // Current authenticated user
+  loading: boolean; // Loading state during auth check
   signIn: (email, password) => Promise<void>;
   signUp: (email, password, name) => Promise<void>;
   signOut: () => Promise<void>;
@@ -454,7 +454,7 @@ import { useAuth } from '@/contexts/AuthContext';
 
 function MyComponent() {
   const { user, loading, signIn, signOut } = useAuth();
-  
+
   // Use auth data and operations
 }
 ```
@@ -470,6 +470,7 @@ function MyComponent() {
 ### Password Validation
 
 **validatePassword** — Validates password meets requirements:
+
 - Minimum 8 characters
 - At least one uppercase letter
 - At least one special character
@@ -555,13 +556,15 @@ Passwords must meet these criteria:
 
 - **Minimum length**: 8 characters
 - **Uppercase letter**: At least one uppercase letter (A-Z)
-- **Special character**: At least one special character (!@#$%^&*)
+- **Special character**: At least one special character (!@#$%^&\*)
 
 Example valid passwords:
+
 - `MyPassword123!`
 - `Secure@Pass2026`
 
 Example invalid passwords:
+
 - `short1!` (too short)
 - `noupperca$e1` (no uppercase)
 - `NoSpecial123` (no special character)
@@ -683,4 +686,3 @@ Key areas to test:
   - Test server error messages
   - Test validation error messages
   - Test alert display and dismissal
-

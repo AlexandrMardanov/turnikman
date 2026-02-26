@@ -1,12 +1,11 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-
-import { useFocusEffect } from 'expo-router';
 
 import { ErrorState } from '@/components/shared/ErrorState';
 import { LoadingState } from '@/components/shared/LoadingState';
 import { COLORS } from '@/constants/colors';
 import { FONTS } from '@/constants/fonts';
+import { useRefreshOnFocus } from '@/hooks/useRefreshOnFocus';
 
 import { useExerciseData } from '../shared/hooks/useExerciseData';
 import { ExerciseItem } from './components/ExerciseItem';
@@ -32,11 +31,7 @@ export function ExerciseListScreen(props: ExerciseListScreenProps) {
     onActiveCountChange(activeCount);
   }, [activeCount, onActiveCountChange]);
 
-  useFocusEffect(
-    useCallback(() => {
-      refresh();
-    }, [refresh])
-  );
+  useRefreshOnFocus(refresh);
 
   function renderContent() {
     if (loading) {
